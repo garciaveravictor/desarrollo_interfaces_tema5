@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pedidos_Meses" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dcc7ecca-1be7-41aa-96a5-c537683b179c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Sample DB"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT COUNT(*) ORDERS, YEAR(ORDERDATE) ANNO, MONTH(ORDERDATE) MES
+FROM ORDERS
+GROUP BY YEAR(ORDERDATE), MONTH(ORDERDATE)
+ORDER BY YEAR(ORDERDATE), MONTH(ORDERDATE)]]>
+	</queryString>
+	<field name="ORDERS" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="ORDERS"/>
+		<property name="com.jaspersoft.studio.field.label" value="ORDERS"/>
+	</field>
+	<field name="ANNO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="ANNO"/>
+		<property name="com.jaspersoft.studio.field.label" value="ANNO"/>
+	</field>
+	<field name="MES" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="MES"/>
+		<property name="com.jaspersoft.studio.field.label" value="MES"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="241" splitType="Stretch">
+			<bar3DChart>
+				<chart evaluationTime="Report" theme="aegean">
+					<reportElement x="10" y="50" width="550" height="180" uuid="6d31407d-50a3-4f3f-a21f-b71c5b62314f"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report"/>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{ANNO}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{MES}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{ORDERS}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot foregroundAlpha="1.0"/>
+					<itemLabel color="#FFFFFF"/>
+					<categoryAxisLabelExpression><![CDATA["Meses Numerados"]]></categoryAxisLabelExpression>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000">
+							<labelFont>
+								<font fontName="Sanerif"/>
+							</labelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisLabelExpression><![CDATA["Pedidos"]]></valueAxisLabelExpression>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+			<staticText>
+				<reportElement mode="Opaque" x="80" y="0" width="400" height="50" forecolor="#000000" backcolor="#C4C4C4" uuid="cda5b57c-d356-4e74-9c57-4f86d478cbca"/>
+				<textElement textAlignment="Center">
+					<font size="26" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Grafico de Pedidos por Año y Mes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</summary>
+</jasperReport>
